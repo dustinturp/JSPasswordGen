@@ -1,39 +1,49 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
+let passEl = document.getElementById('password');
+
+// let passEl = document.querySelector('#password');
 
 const numbers = (() => {
   const number_array = [...Array(10)].map((val, i) => String.fromCharCode(i + 48));
   return number_array;
 })();
+console.log(numbers);
 // array of lower case 
 const lowerLetters = (() => {
   const lower = [...Array(26)].map((val, i) => String.fromCharCode(i + 97));
   return lower;
 })();
+typeof lowerLetters;
+console.log(lowerLetters);
+
 // array of upper case  
 const upperLetters = (() => {
   const caps = [...Array(26)].map((val, i) => String.fromCharCode(i + 65));
   return caps;
 })();
+console.log(upperLetters);
 // array of special characters 
 const specialCharacters = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split('');
 // array of all
 const allCharacters = [...numbers, ...lowerLetters, ...upperLetters, ...specialCharacters];
 
+
+// let passEl = document.getElementById('#password')
 //build function to merge arrays
 
 // random pick gen
 
 function getRandNum(passLen) {
   return (Math.floor(Math.random() * passLen))
-}
+};
 
 // let passLength = 0;
 
 // update global variable with password length
 const promptPassLength =  function() {
   // select length of password 8-128 characters
-  const inputPassLen = prompt("Enter password length (8-128 characters) ")
+  const inputPassLen = prompt("Enter password length (8-128 characters) ");
   // convert input to number.
   const userPassLength = parseInt(inputPassLen);
   console.log(userPassLength);
@@ -49,12 +59,10 @@ const promptPassLength =  function() {
 
 // Write password to the #password input
 function writePassword() {
-  // const passLength = promptPassLength();
-  // console.log(passLength);
-  // const passCriteriaSelection = passCriteria();
-  // console.log(passCriteriaSelection);
-
   const password = generatePassword();
+  passEl.innerHTML = password;
+  // passEl.appendChild(pass);
+
 };
 
 // prompt user for password criteria wrap this in a function!!
@@ -113,65 +121,60 @@ const passCriteria = function() {
 // takes selection of password criteria and builds new array to gen pass from.
 const PassBuilder = function(num, num2) {
   console.log(num,num2)
-  if (num2 == 1) {
+  let password = 5;
+  console.log(password);
+  if (num2 === 1) {
     for ( let i = 0; i < num; i++) {
       password += lowerLetters[getRandNum(lowerLetters.length)];
     }
-    console.log(password);
   }
-  else if (num2 == 2) {
+  else if (num2 === 2) {
     for ( let i = 0; i < num; i++) {
      password += upperLetters[getRandNum(upperLetters.length)];
-     
     }
   }
-  else if (num2 == 3) {
+  else if (num2 === 3) {
     for ( let i = 0; i < num; i++) {
       password += numbers[getRandNum(numbers.length)];
-      
     }
   }
-  else if (num2 == 4) {
+  else if (num2 === 4) {
     for ( let i = 0; i < num; i++) {
       password += specialCharacters[getRandNum(specialCharacters.length)];
     }
   }
-  else if (num2 == 5) {
+  else if (num2 === 5) {
     for ( let i = 0; i < num; i++) {
       password += allCharacters[getRandNum(allCharacters.length)];
     }
   }
-  console.log(password)
+  typeof password;
   return password;
 };
 
-
 const generatePassword = function() {
   // array of numbers 
-  
-
   const passLength = promptPassLength();
   console.log(passLength);
-
   const passOption = passCriteria();
   console.log(passOption);
   const passwordString = PassBuilder(passLength, passOption);
   console.log(passwordString);
+
+  //passEl.innerHTML = pass;
+  //passEl.appendChild()//maybe select parent element first
+  // passEl.textContent = passwordString;
+  // console.log(passEl);
   return passwordString;
-
-  // build new array from chosen option.
-  for ( let i = 0; i < passLength; i++) {
-    // select number of characters from new combined array if all selected arrays.
-
-  }
-  //built password returned
 };
 
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+// console.log(generatePassword());
+
+// passEl.textContent = generatePassword();
+
+// var passwordText = document.querySelector("#password")
 
   // display password on the page in the text box or alert. 
 
 // Add event listener to generate button
-// added to HTML on click
 generateBtn.addEventListener("click", writePassword);
