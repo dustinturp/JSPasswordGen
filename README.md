@@ -1,8 +1,14 @@
-## works cited 
-Array for alphabet 
+## Javascript Password generator
 
-https://gist.github.com/bendc/1e6af8f2d8027f2965da#file-alphabet-js
+# Description
+Simple password generator that will create a password of 8-128 characters comprised of your choice of lowercase, uppercase, numbers, and special characters.
 
+# Made with 
+- HTML
+- CSS
+- JavaScript
 
+## Preview
 
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+![site screenshot](/assets/img/previewGitHub.png)
+
