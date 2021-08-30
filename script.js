@@ -16,6 +16,7 @@ const passOptions = [{q:"Do you want your password to contain lowercase letters?
 //empty arrays for combining 
 let builtArray = [];
 let passArray = [];
+let falseArray = [];
 
 //get random from array.
 function getRandomNumber(passlen) {
@@ -58,8 +59,18 @@ function passCriteria() {
           // push the string in the answer to new array
          builtArray.push(passOptions[i].a);
       }
+      else if (selectionMade === false) {
+        falseArray.push(selectionMade);
+      }
       // console.log(builtArray);
     }
+    //console.log(falseArray.length);
+  while (falseArray.length === 4) {
+    alert("you must select at least one criteria")
+    //reset false Array to 0
+    falseArray =[]
+    return passCriteria()
+  }
   return builtArray;
 };
 
